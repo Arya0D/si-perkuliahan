@@ -1,3 +1,11 @@
+<?php
+if ($action == "form/add") {
+  $text = "Tambah";
+} else {
+  $text = "Edit";
+}
+?>
+
 <div class="w-screen flex p-3 justify-center ">
   <div class="  h-fit p-4 border border-1 rounded-md shadow-lg ">
     <form action="<?= $action ?>" method="POST" accept-charset="utf-8">

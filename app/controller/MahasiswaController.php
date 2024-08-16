@@ -5,13 +5,11 @@ use App\model\MahasiswaModel;
 class MahasiswaController extends MahasiswaModel {
   private $content;
   public function index() {
-    $this->content = __DIR__ . "/../view/mahasiswa/Index.php";
+    require_once __DIR__ . "/../view/templates/header.php";
+    require_once __DIR__ . "/../view/mahasiswa/Index.php";
+    require_once __DIR__ . "/../view/templates/footer.php";
+  }
 
-    require_once __DIR__ . "/../view/layout.php";
-  }
-  public function view() {
-    require_once $this->content;
-  }
 
   public function form() {
     $action = "form/add";
@@ -30,7 +28,7 @@ class MahasiswaController extends MahasiswaModel {
     $data = $this->getAll();
     $no = 1;
     foreach ($data as $value): ?>
-    <tr>
+    <tr class="odd:bg-sky-100">
       <td><?= $no ?></td>
       <td><?= $value["nama_mahasiswa"] ?></td>
       <td><?= $value["npm"] ?></td>

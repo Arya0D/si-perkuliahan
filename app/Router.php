@@ -5,8 +5,7 @@ class Router
 {
   private $routes = [];
 
-  public function add($method, $path, $controller, $function)
-  {
+  public function add($method, $path, $controller, $function) {
     $this->routes[] = [
       "method" => $method,
       "path" => $path,
@@ -15,8 +14,7 @@ class Router
     ];
   }
 
-  public function run()
-  {
+  public function run() {
     $path = "/";
 
     if (isset($_SERVER["PATH_INFO"])) {
@@ -29,7 +27,7 @@ class Router
         $controller = new $x['controller'];
         $function = $x['function'];
         $controller->$function();
-      }
+      } 
     }
   }
 }

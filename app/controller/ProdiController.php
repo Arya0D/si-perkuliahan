@@ -7,13 +7,11 @@ use App\view\components\Components;
 class ProdiController extends ProdiModel {
   private $content;
   public function index() {
-    $this->content = __DIR__ . "/../view/prodi/index.php";
-    require_once __DIR__ . "/../view/layout.php";
+    require_once __DIR__ . "/../view/templates/header.php";
+    require_once __DIR__ . "/../view/prodi/index.php";
+    require_once __DIR__ . "/../view/templates/footer.php";
   }
-  public function view() {
-    require_once $this->content;
-  }
-  public function form() {
+   function form() {
     $action = "form/add";
     if (@$_GET['id']) {
       $id = $_GET['id'];
@@ -29,7 +27,7 @@ class ProdiController extends ProdiModel {
   public function show() {
     $data = $this->getAll();
     foreach ($data as $value): ?>
-    <tr>
+    <tr class="odd:bg-sky-100">
       <td><?= $value["id_prodi"] ?></td>
       <td><?= $value["nama_prodi"] ?></td>
       <td class="flex gap-2 justify-center p-1">

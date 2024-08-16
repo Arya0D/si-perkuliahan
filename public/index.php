@@ -11,6 +11,9 @@ use App\view\Layout;
 $router = new Router();
 
 $router->add("GET", "/", Controllers::class, "index");
+$router->add("GET", "/login/", Controllers::class, "login");
+$router->add("GET", "/logout/", Controllers::class, "logout");
+$router->add("POST", "/login/", Controllers::class, "login");
 
 
 $router->add("GET", "/prodi/", ProdiController::class, "index");
