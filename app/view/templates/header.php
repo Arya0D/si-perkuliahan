@@ -19,15 +19,22 @@ $user = $_SESSION['login'];
   <link rel="stylesheet" href="<?=Config::url().'/css/output.css' ?>"
   </head>
 
-  <body class="h-full w-full">
-    <nav class="fixed top-0 left-0 w-full">
-      <div class="w-100 flex justify-between items-center px-6 py-4 border border-1 bg-neutral-50 h-[64px]">
+  <body class="h-screen w-full bg-slate-50">
+    <nav class="fixed top-0 left-0 w-full z-10">
+      <div class="w-screen flex justify-between items-center px-6 py-4 border border-1 bg-neutral-50 h-[64px]">
         <a href="/" class="text-xl font-semibold">SI-PERKULIAHAN</a>
-        <a href="" class="text-sky-300 font-bold"><?= $user['username']; ?></a>
+        <div class="dropdown dropdown-end">
+          <button href="" class="text-sky-300 font-bold" role="button"><?= $user['username']; ?></button>
+          <ul class="dropdown-content menu bg-base-100 rounded-box z-[1] w-fit p-2 shadow">
+            <li class="">
+              <a href="../logout/">Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <main class=" w-full mt-[62px] flex ">
-      <aside class=" h-screen w-1/5 bg-stone-50 border border-2">
+      <aside class="hidden md:block h-screen w-1/5 bg-stone-50 border border-2">
         <div class="p-2 sticky top-[64px]">
           <h1 class="text-center text-xl font-semibold">DASHBOARD</h1>
           <ul class="grid gap-2 m-1 relative">

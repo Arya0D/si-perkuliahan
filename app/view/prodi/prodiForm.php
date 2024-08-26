@@ -1,4 +1,5 @@
 <?php
+use App\view\Components\Components;
 if ($action == "form/add") {
   $text = "Tambah";
 } else {
@@ -7,12 +8,15 @@ if ($action == "form/add") {
 ?>
 
 <div class="w-screen flex p-3 justify-center ">
-  <div class="  h-fit p-4 border border-1 rounded-md shadow-lg ">
-    <form action="<?= $action ?>" method="POST" accept-charset="utf-8">
-      <label for="">Nama Prodi</label><br />
-    <input type="hidden" name="id" id="id" value="<?=@$x['id_prodi'] ?>" />
-  <input type="text" name="namaProdi" value="<?=@$x['nama_prodi'] ?>" /><br />
-<input type="submit" name="submit" />
-</form>
-</div>
+  <div class="card shadow-xl mx-12 my-6 w-full border border-2 h-fit">
+    <div class="card-body">
+      <h1 class="card-title text-sky-600 border-b border-1"><?= $text." Prodi" ?></h1>
+      <form action="<?=$action ?>" method="POST" class="form-control">
+
+        <input type="hidden" name="id" id="id" value="<?=@$x['id_prodi'] ?>" />
+
+      <?php Components::textInput("Nama Prodi:", "namaProdi", @$x['nama_prodi']) ?>
+      <button type="submit" class="btn bg-sky-300 text-lg text-white"><?=$text ?></button>
+    </form>
+  </div>
 </div>

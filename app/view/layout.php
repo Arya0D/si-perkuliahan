@@ -24,7 +24,10 @@ $user = $_SESSION['login'];
 <nav class="fixed top-0 left-0 w-full">
 <div class="w-100 flex justify-between items-center px-6 py-4 border border-1 bg-neutral-50 h-[64px]">
 <a href="/" class="text-xl font-semibold">SI-PERKULIAHAN</a>
-<a href="" class="italic font-thin"><?=$user['username'] ?></a>
+  <div class="flex gap-4 items-center">
+          <a href="" class="text-sky-300 font-bold"><?= $user['username']; ?></a>
+          <a href="/logout/" class="btn ">Logout</a>
+        </div>
 </div>
 </nav>
 

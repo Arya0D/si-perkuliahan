@@ -1,4 +1,5 @@
 <?php
+use App\view\Components\Components;
 if ($action == "form/add") {
   $text = "Tambah";
 } else {
@@ -6,21 +7,20 @@ if ($action == "form/add") {
 }
 ?>
 <div class="w-screen flex p-3 justify-center ">
-  <div class="w-[700px] h-fit p-4 border border-1 rounded-md shadow-lg ">
-    <h1 class="text-2xl text-sky-600 border-b border-1"><?=$text." Mahasiswa" ?></h1>
+  <div class="card shadow-xl mx-12 w-full border border-2 h-fit">
+    <div class="card-body">
+      <h1 class="card-title text-sky-600 border-b border-1"><?= $text." Mahasiswa" ?></h1>
+      <form action="<?=$action ?>" method="POST" class="form-control">
+        <input type="hidden" name="id" value="<?=@$x['id_mahasiswa'] ?>">
+        <?php Components::textInput("Nama Mahasiswa:", "nama_mahasiswa", @$x['nama_mahasiswa']) ?>
 
+        <?php Components::numberInput("NPM:", "npm", @$x['npm']) ?>
 
-    <form action="<?=$action ?>" method="POST">
-      <input type="hidden" name="id" value="<?=@$x['id_mahasiswa'] ?>">
-      <label for="">Nama Mahasiswa:</label><br />
-    <input type="text" name="nama_mahasiswa" value="<?=@$x['nama_mahasiswa'] ?>" required /><br />
-<label for="">NPM:</label><br />
-<input type="number" value="<?=@$x['npm'] ?>" name="npm" / required><br />
-<label for="">Alamat</label><br />
-<textarea name="alamat" required>
-<?= @$x['alamat'] ?>
-</textarea><br />
-<button type="submit" class="p-2 bg-sky-100"><?=$text?></button>
-</form>
+        <label for="">Alamat</label><br />
+      <textarea name="alamat" required>
+        <?= @$x['alamat'] ?>
+      </textarea><br />
+    <button type="submit" class="btn bg-sky-300 text-lg text-white"><?=$text ?></button>
+  </form>
 </div>
 </div>

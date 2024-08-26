@@ -22,6 +22,7 @@ class KelasController extends KelasModel
       $id = $_GET['id'];
       $data = $this->getById($id);
       $x = $data->fetch_assoc();
+
       $action = "form/edit";
     }
     $this->content = __DIR__ . "/../view/kelas/kelasForm.php";
@@ -52,18 +53,15 @@ class KelasController extends KelasModel
 
   public function prodi_option() {
     $data = $this->getProdi();
-    if ($_GET['id']) {
+    $prodi = [];
+    if (@$_GET['id']) {
       $n = $this->getById($_GET['id']);
       $f = $n->fetch_assoc();
-      ?>
-      <option value="<?= $f['id_prodi'] ?>"><?= $f['nama_prodi'] ?></option>
-      <?php
     }
     foreach ($data as $x) {
-      ?>
-      <option value="<?= $x['id_prodi'] ?>"><?= $x['nama_prodi'] ?></option>
-      <?php
+      $prodi[$x['id_prodi']] = $x['nama_prodi'];
     }
+    return $prodi;
   }
 
   public function deleteKelas() {
